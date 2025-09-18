@@ -1,4 +1,6 @@
 import { useState } from 'react'
+import emailjs from '@emailjs/browser'
+import { emailConfig } from './emailConfig'
 import './App.css'
 
 function App() {
@@ -6,6 +8,8 @@ function App() {
     name: '',
     email: ''
   })
+  const [isSubmitting, setIsSubmitting] = useState(false)
+  const [submitStatus, setSubmitStatus] = useState(null) // 'success', 'error', or null
 
   const handleInputChange = (e) => {
     const { name, value } = e.target
@@ -13,14 +17,40 @@ function App() {
       ...prev,
       [name]: value
     }))
+    // Clear status when user starts typing again
+    if (submitStatus) {
+      setSubmitStatus(null)
+    }
   }
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault()
-    // TODO: Add backend functionality later
-    console.log('Form submitted:', formData)
-    alert(`Thanks ${formData.name}! You're now part of the Bros crew!`)
-    setFormData({ name: '', email: '' })
+    setIsSubmitting(true)
+    setSubmitStatus(null)
+
+    try {
+      const templateParams = {
+        from_name: formData.name,
+        from_email: formData.email,
+        to_email: 'bros@discs4bros.com',
+        message: `New signup from ${formData.name} (${formData.email}) for Discs4Bros exclusive access!`
+      }
+
+      await emailjs.send(
+        emailConfig.serviceId, 
+        emailConfig.templateId, 
+        templateParams, 
+        emailConfig.publicKey
+      )
+      
+      setSubmitStatus('success')
+      setFormData({ name: '', email: '' })
+    } catch (error) {
+      console.error('Email send failed:', error)
+      setSubmitStatus('error')
+    } finally {
+      setIsSubmitting(false)
+    }
   }
 
   return (
@@ -77,6 +107,7 @@ function App() {
                   value={formData.name}
                   onChange={handleInputChange}
                   required
+                  disabled={isSubmitting}
                   className="form-input"
                 />
               </div>
@@ -88,12 +119,35 @@ function App() {
                   value={formData.email}
                   onChange={handleInputChange}
                   required
+                  disabled={isSubmitting}
                   className="form-input"
                 />
               </div>
-              <button type="submit" className="submit-btn">
-                <span>Join the Crew</span>
-                <span className="btn-accent">🚀</span>
+              
+              {submitStatus === 'success' && (
+                <div className="status-message success">
+                  🎉 Welcome to the Bros crew! You'll be the first to know about our epic drops!
+                </div>
+              )}
+              
+              {submitStatus === 'error' && (
+                <div className="status-message error">
+                  😕 Oops! Something went wrong. Please try again or email us directly at bros@discs4bros.com
+                </div>
+              )}
+              
+              <button type="submit" className="submit-btn" disabled={isSubmitting}>
+                {isSubmitting ? (
+                  <>
+                    <span>Joining the Crew...</span>
+                    <span className="btn-accent">⏳</span>
+                  </>
+                ) : (
+                  <>
+                    <span>Join the Crew</span>
+                    <span className="btn-accent">🚀</span>
+                  </>
+                )}
               </button>
             </form>
           </div>
