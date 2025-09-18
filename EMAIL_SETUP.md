@@ -1,21 +1,23 @@
 # Email Setup Guide for Discs4Bros
 
-This guide will help you set up email functionality so form submissions are sent to bros@discs4bros.com.
+This guide will help you set up email functionality so form submissions are sent to bros@discs4bros.com (Microsoft Email).
 
-## Option 1: EmailJS (Recommended - Free & Easy)
+## Option 1: EmailJS with Microsoft/Outlook (Recommended)
 
-EmailJS allows you to send emails directly from the frontend without a backend server.
+EmailJS allows you to send emails directly from the frontend without a backend server. Since bros@discs4bros.com is a Microsoft email, we'll use Outlook integration.
 
 ### Step 1: Create EmailJS Account
 1. Go to [https://www.emailjs.com/](https://www.emailjs.com/)
 2. Sign up for a free account (up to 200 emails/month)
 
-### Step 2: Add Email Service
+### Step 2: Add Microsoft/Outlook Service
 1. In your EmailJS dashboard, go to "Email Services"
 2. Click "Add New Service"
-3. Choose your email provider (Gmail, Outlook, etc.)
-4. Follow the setup instructions to connect your email account
-5. Note down your **Service ID**
+3. **Select "Outlook" (Microsoft)** from the list
+4. You'll be redirected to Microsoft's OAuth login
+5. Sign in with the **bros@discs4bros.com** Microsoft account
+6. Grant necessary permissions to EmailJS
+7. Note down your **Service ID** (will look like `service_xxxxxxx`)
 
 ### Step 3: Create Email Template
 1. Go to "Email Templates" in your dashboard
