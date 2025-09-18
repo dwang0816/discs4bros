@@ -8,9 +8,9 @@
 // 6. Replace the values below with your actual EmailJS credentials
 
 export const emailConfig = {
-  serviceId: 'YOUR_OUTLOOK_SERVICE_ID', // Replace with your EmailJS Outlook service ID
-  templateId: 'YOUR_TEMPLATE_ID', // Replace with your EmailJS template ID  
-  publicKey: 'YOUR_PUBLIC_KEY' // Replace with your EmailJS public key
+  serviceId: 'service_3tqqtak', // Your EmailJS Outlook service ID
+  templateId: 'template_0zee9dl', // Your EmailJS template ID  
+  publicKey: 'mSf0Y9YT_DEkgbIpx' // Your EmailJS public key
 }
 
 // Example template variables you can use in your EmailJS template:
