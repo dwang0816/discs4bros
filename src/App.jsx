@@ -103,7 +103,8 @@ function App() {
       {/* Footer */}
       <footer className="footer">
         <div className="container">
-          <p>&copy; 2024 Discs4Bros.com - For Bros, By Bros</p>
+          <p>&copy; 2025 Discs4Bros.com - For Bros, By Bros</p>
+          <p>Contact us: <a href="mailto:bros@discs4bros.com">bros@discs4bros.com</a></p>
         </div>
       </footer>
     </div>
