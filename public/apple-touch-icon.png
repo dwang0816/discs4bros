@@ -1,4 +1,6 @@
-# Placeholder for 180x180 Apple touch icon
-# In production, replace this with an actual 180x180 PNG image of a disc golf disc
-# You can create one using tools like Canva, Figma, or favicon generators
-# Recommended: Orange disc (#ff6b35) with "D4B" text or Discs4Bros branding
+# 180x180 Apple Touch Icon
+# To create this file, convert the favicon.svg to PNG at 180x180 pixels
+# You can use online tools or the following command if you have ImageMagick:
+# convert -background none -size 180x180 favicon.svg apple-touch-icon.png
+
+# This larger version should include more detail and the full "Discs4Bros" text if possible

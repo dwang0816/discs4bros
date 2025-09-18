@@ -1,4 +1,6 @@
-# Placeholder for 16x16 favicon
-# In production, replace this with an actual 16x16 PNG image of a disc golf disc
-# You can create one using tools like Canva, Figma, or favicon generators
-# Recommended: Orange disc (#ff6b35) on transparent background
+# 16x16 PNG version
+# To create this file, convert the favicon.svg to PNG at 16x16 pixels
+# You can use online tools or the following command if you have ImageMagick:
+# convert -background none -size 16x16 favicon.svg favicon-16x16.png
+
+# For now, the SVG will handle this size automatically
